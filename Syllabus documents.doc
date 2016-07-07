@@ -1,0 +1,160 @@
+﻿I. Java concepts
+- There are 4 access level: public, protected, package-private and private.
+When we declare reference variable without modifier, default scope is package-private.
+
+Modifier
+Class
+Package
+Subclass
+World
+Public
+y
+y
+y
+y
+protected
+y
+y
+y
+N
+No modifier
+y
+y
+N
+N
+private
+Y
+N
+N
+N
+
+
+1.1 OOPs concepts:
+- OOPs is an acronym of Object Oriented Programing. 
+- OOP has 4 properties: 
+	+ abstraction
+		hiding internal and functionality. Use abstract class and interface is to achieve abstraction
+	+ encapsulation
+		java help us to wrap code and data together into a unit. Declare the variables as private and using getter setter method to achieve encapsulation.
+	+ inheritance
+		the sub class uses the method that belongs to parent class. Use extends keyword to achieve inheritance. Java doesn't support multiple inheritance(no more than one inheritance); however, the class can implement more than one interface.
+	+ polymorphism
+		the parent class can represent for the child class in particular moment. Use overload() and override() to achieve polymorphism. Declare the object by parent object to achieve polymorphism.
+	
+1.2 Inheritance detail
+- when the child object extends the parent object, it can use all of properties of parent. 
+- extends is the keyword used to inherit the properties of a class.
+	E.g:  class A{ 
+		String hello = “Kyler”;
+		void sayHello(){...}
+		…
+		}
+		class B extends A {
+			public static void main(String[] args){
+				B b = new B();
+				System.out.println(“hello variable is : “+hello);
+				//Result:	“hello variable is :Kyler”;
+
+				b.sayHello();
+			}
+		}
+
+- the parent class reference variable can hold the child class;however,using that way, it can access to the member of parent class only. To access to the member of bot class, it is recommended to always create reference variable by child class
+- super keyword is similar to this keyword.
+	+ it is used to differentiate the members of parent class and child class in case they have the same names.
+		E.g: class Parent{
+				int t = 0;
+			}
+			public class Child{
+				int t = 1;
+				public static void main(String[] args){
+					System.out.println(“The result is “ + this.t + ” and ” + super.t); 
+				}	
+			}
+	//Result:     “The result is 1 and 0”
+
+
+	+ it is used to invoke the parent class constructor from child class.
+	
+			class Parent{
+				int age = 0;
+				Parent(int age){
+					this.age = age;
+				}
+				public void getAge(){
+					System.out.println(“Age is :”+this.age);
+				}
+			}
+
+			public class Child{
+				Child(int age){
+					super(age);
+				}
+				public static void main(String[] args){
+					Child child = new Child(3);
+					child.getAge();
+				}
+			}
+	//Result:		“Age is : 3”
+
+- Type of inheritance:
+	+ single inheritance:	
+				public class A{ … }
+				public class B extends A{ … }
+
+	+ multi level inheritance: 	
+				public class A{ … }
+				public class B extends A{ … }
+				public class C extends B{ … }
+
+	+ hierarchical inheritance
+				public class A{ … }
+				public class B extends A{ … }
+				public class C extends A{ … }
+
+	+ multiple inheritance: //Java doesn't support multiple inheritance
+				public class A{ … }
+				public class B{ … }
+				public class C extends A,B{ … }
+
+- Java doesn't support multiple inheritance, it means a class cannot extend more than one class. However, a class can implement one or more interfaces, so that it makes Java get rid of impossibility of multiple inheritance.
+
+1.3 Exception Handling 
+- An exception is a problem that happens during the executional of a program. When exception occurs, the normal flow of program is disrupted and the program will be terminated. For example, the class has 10 statements and the exception occurs at the statement 5, that means when the statement is run, the program will be terminated and the flowing statements won't be run.
+So to prevent this case, we need to handle the exception. If we handle the exception, the flowing statement will be run normal.
+
+- There are 3 types of Exception:
+	+ CheckedException: IOException,SQLException,… it occurs at compile-time.
+	+ UnCheckedException: Exceptions that extends the RuntimeException, it occurs at runtime
+	+ Error: OutOfMemoryError, VirtualMachineError, AssertionError, … 
+
+- In Exception, there 2 main types : IOException and RuntimeException.
+
+- Keywords is used in Exceptions
+	+try{ … } 		// piece of code that exception may be happened
+	 catch( … ){ … } 	// handle exception
+	 finally{ … } 	// whether occur or not occur exception,this will be run
+	+throw 		// check the exception line by line
+	+throws		// check the exception by all method.
+
+1.4 Packages and interfaces
+- Packages are used to prevent naming conflict, to control access, to make searching/locating and usage of classes, interfaces, enumerations and annotations easier, etc … 
+- Interfaces are similar to “blueprint”, it declare the method without body and the object which implements the interface will define for all of method into the interface. 
+
+1.5 JVM & .jar file extension
+- JVM is an acronym of Java Virtual Machine, it creates the virtual environment for running the Java bytecodes. JVM cann't understand *.java files, that's why we need to compile *.java files to *.class files that contain bytecodes understandable for JVM. It means Java application is runnable on Windows computer, MAC computer or Linux computer because of JVM
+- jar stands for Java Archive it's like a ZIP file. It contains compiled Java code (*.class), but sometimes also Java sourcecode (*.java).
+
+1.6 Multithreading (Thread & Runnable)
+- Java provides program can run on multithread.
+- Threaded program can create two or more parts that they can handle different tasks independently
+- Runnable interface is about the task will be run. Class implement Runnable interface will define the run() method and inside the run() method is what a thread does the task.
+- Thread class is like a controller for runnable. It implements Runnable interface and we also need to define the run() method. Whenever we want to start the thread, we just call start() method and the run() method will be run in particular part.
+
+1.7 Junit
+- Junit is framework of Unit Test in Java. It helps developer to test the unique class by using the input data and get the expect output data, it will return true if the output data is matched with the expected output data and opposite, it will return false.
+- In Android, there are a lot of libraries provided to help developer can work with unit test easily, for example: Mockito, Robolectric, … 
+
+II. Introduction to Android
+2.1 What is Android?
+- Android is mobile Operating System based on Java language environment. It provides application framework that allows you to build your own application and games for mobile devices. 
